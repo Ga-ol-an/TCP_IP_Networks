@@ -1,0 +1,8 @@
+35. Modify the simplex-talk socket program so that it uses UDP as
+the transport protocol rather than TCP. You will have to change
+SOCK_STREAM to SOCK_DGRAM in both client and server. Then, in
+the server, remove the calls to listen() and accept(), and replace the
+two nested loops at the end with a single loop that calls recv() with
+socket s. Finally, see what happens when two such UDP clients
+simultaneously connect to the same UDP server, and compare this
+to the TCP behavior.

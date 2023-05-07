@@ -1,0 +1,4 @@
+34. Modify the simplex-talk socket program so that each time the client
+sends a line to the server, the server sends the line back to the client.
+The client (and server) will now have to make alternating calls to
+recv() and send().

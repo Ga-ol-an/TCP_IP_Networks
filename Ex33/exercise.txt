@@ -1,0 +1,8 @@
+33. Obtain and build the simplex-talk sample socket program shown in
+the text. Start one server and one client, in separate windows. While
+the first client is running, start 10 other clients that connect to the
+same server; these other clients should most likely be started in the
+background with their input redirected from a file. What happens to
+these 10 clients? Do their connect()s fail, time out, or succeed? Do any
+other calls block? Now let the first client exit. What happens? Try this
+with the server value MAX_PENDING set to 1 as well.
