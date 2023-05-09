@@ -21,6 +21,7 @@ int main() {
     bzero((char *)&sin, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
+    printf("O host: %u \n", sin.sin_addr.s_addr);
     sin.sin_port = htons(SERVER_PORT);
     /* setup passive open */
     if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
