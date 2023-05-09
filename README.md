@@ -21,5 +21,5 @@ Para rodar os códigos do repositório, usar os seguintes comandos:
 
 ### Exemplos:
 
-    gcc client_base.c -o client_base && ./client_base
+    gcc client_base.c -o client_base && ./client_base host_name_of_server
     gcc server_base.c -o server_base && ./server_base

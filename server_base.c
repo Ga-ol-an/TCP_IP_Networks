@@ -33,7 +33,7 @@ int main() {
     }
     listen(s, MAX_PENDING);
     /* wait for connection, then receive and print text */
-    
+    addr_len = sizeof(sin);
     while (1) {
         if ((new_s = accept(s, (struct sockaddr *)&sin, &addr_len)) < 0) {
             perror("simplex-talk: accept");
