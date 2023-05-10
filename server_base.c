@@ -8,10 +8,20 @@
 #define SERVER_PORT 54321
 #define MAX_PENDING 5
 #define MAX_LINE 256
-/*  Ao que me parece, esse código já está funcional (mas nao precisei de fazer o que está abaixo
-e que foi prpopsto pelo prof) */
-/* TODO: --ok Código do server não inicializa len antes de chamar o accept. Logo,
-acrescentar: len = sizeof(sin); */
+
+/* Rode esse em um terminal e o client em outro.
+
+para rodar esse, é só digitar:
+
+    ./server_base 
+
+
+p/ compliar e rodar:
+
+    gcc server_base.c -o server_base && ./server_base
+
+ */
+
 int main() {
     struct sockaddr_in sin;
     char buf[MAX_LINE];

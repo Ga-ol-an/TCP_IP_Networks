@@ -10,14 +10,19 @@
 #define SERVER_PORT 54321
 #define MAX_LINE 256
 
-//! Esse código ainda não está funcional
-/* TODO:
-OK -- No código do cliente, para uso em rede local onde não há registro de nomes DNS
-para as estações, modificar as linhas do código que leem o nome fornecido pelo
-usuário e consultam o DNS. Modifique para ler o endereço IP em dotted notation e
-converter para binário. 
+/*
+Coloque o seu ip ao rodar esse comando, da seguinte forma:
+gcc client_base.c -o client_base && ./client_base host_name_of_server
 
-Examplo de host: 150.164.226.33
+Examplo de host: 192.168.18.18
+
+Exemplo:
+P/ compilar e rodar:
+    gcc client_base.c -o client_base && 
+
+Somente para rodar:
+    ./client_base 192.168.18.18
+
 */
 int main(int argc, char *argv[]) {
     FILE *fp;
