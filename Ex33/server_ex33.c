@@ -6,7 +6,7 @@
 #include <sys/types.h>
 
 #define SERVER_PORT 54321
-#define MAX_PENDING 5
+#define MAX_PENDING 1
 #define MAX_LINE 256
 /*  Ao que me parece, esse código já está funcional (mas nao precisei de fazer o que está abaixo
 e que foi prpopsto pelo prof) */

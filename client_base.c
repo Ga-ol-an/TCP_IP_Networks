@@ -12,7 +12,7 @@
 
 //! Esse código ainda não está funcional
 /* TODO:
-No código do cliente, para uso em rede local onde não há registro de nomes DNS
+OK -- No código do cliente, para uso em rede local onde não há registro de nomes DNS
 para as estações, modificar as linhas do código que leem o nome fornecido pelo
 usuário e consultam o DNS. Modifique para ler o endereço IP em dotted notation e
 converter para binário. 
@@ -27,6 +27,9 @@ int main(int argc, char *argv[]) {
     char buf[MAX_LINE];
     int s;
     int len;
+
+    len = sizeof(sin);
+
     in_addr_t binary_address;
     if (argc == 2) {
         host = argv[1];
@@ -39,17 +42,16 @@ int main(int argc, char *argv[]) {
     //printf("%s", host);
     binary_address = inet_addr(host);
     //printf("%u", binary_address);
-    //ouzo dizer que o binary address está correto. testei com prints
     if (!binary_address) {
         fprintf(stderr, "simplex-talk: unknown host: %s\n", host);
         exit(1);
     }
 
     /* build address data structure */
-    //  Explaination: zero(void *s, size_t n) - The bzero() function shall place n zero-valued bytes in the area pointed to by s.
+    //  Explanation: zero(void *s, size_t n) - The bzero() function shall place n zero-valued bytes in the area pointed to by s.
     bzero((char *)&sin, sizeof(sin)); // which means that sin has receveid zeros here
     sin.sin_family = AF_INET;
-    // Explaination: void bcopy(const void *src, void *dest, size_t n); - The bcopy() function copies n bytes from src to dest.  The result is correct, even when both areas overlap.
+    // Explanation: void bcopy(const void *src, void *dest, size_t n); - The bcopy() function copies n bytes from src to dest.  The result is correct, even when both areas overlap.
     bcopy(&binary_address, (char *)&sin.sin_addr, sizeof(binary_address));
     sin.sin_port = htons(SERVER_PORT);
     /* active open */

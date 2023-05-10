@@ -1,0 +1,86 @@
+Voce pega o ip da sua máquina. Para fazer isso, pesquisar o procedimento para o seu O.S.
+Perceba que no inicio, após iniciarmos o servidor, setamos uma variável no linux com o IP desejado.
+Depois disso, rodamos o seguinte comando: (Esse comando está presente no arquivo comando.)
+OBS: Atencao, nao pode haver espaços na atribuicao de variavel ip='...'
+ip='ip_da_maquina'
+for i in {1..10}; do ./client_base $ip &  done
+
+add_image_1 aqui
+
+feito isso, ao usarmos a função "jobs", notamos que os 10 comandos foram
+inciados, sendo que os 6 primeiros estão parados e os 4 últimos, rodado. 
+
+Passado um tempo, nota-se que os 3 ultimos servicos sofreram de:
+Connection timed out, pois eles não conseguiram se conectar ao servidor
+no tempo estipulado.
+
+add_image_2 aqui
+
+já na imagem 2, notamos que conseguimos ver a saida dos comando que resultaram
+em time out, ao mesmo tempo da confirmação de que os outros 7 processos estao rodando.
+
+##### Eu nao tenho tanta certeza das duas proximas linhas. Checar pfv
+    O que explica o fato de que 7 servidores que se conectaram com sucesso é o fato de que a fila, denominada como
+    MAX_PENDING, é setada como 5. Conforme será explicitado melhor no final dessa questão, acreditamos que a contagem
+    aconteça a partir do valor de 0. Dessa forma, acreditamos que ao termos 7 clients não desativados seja porque temos 1 
+    ativo e 6 em espera.
+
+Ao se iniciar os testes, que não há entradas no servidor. A partir de agora, eu entrarei
+individualmente nos servicos rodando, e tentarei enviar mensagens a paritr deles para o servidor.
+
+Farei isso através do comando "fg num_job", que trás para o "foreground" o comando
+que está sendo rodado em "background".
+
+(Situacao antes do incio dos testes)
+add_image_3 aqui
+
+
+logo apos digitar o comando, vemos o seguinte:
+
+add_image_4 aqui
+
+Ao enviar uma mensagem para o servidor, notamos o seguinte:
+
+add_image_5 aqui
+
+Notamos que a mensagem digitada no job 1 é enviada com sucesso para o servidor, que a reproduz em 
+seguida.
+Saindo do job 1 sem derrub-alo, atraves do atalho Crtl+Z, irei agora para o segundo 
+job.
+Veja na imagem a seguir que ao tentar enviar uma mensagem ao servidor, o cliente falha.
+Isso acontece pois o servidor não está em conexão ativa com esse cliente, o que faz com o servidor
+não receba ou reproduza a mensagem. O mesmo acontece para os demais jobs (do 1 ao 7).
+
+add_image_6 aqui
+
+
+Apos o processo 1 anteriormente mencionado foi terminado, notamos o seguinte:
+
+add_image_7.1 aqui
+
+Recebemos, do segudo job, a mensagem previamente digitada. E agora, podemos usar o job 2 como cliente ativo.
+
+add_image_8 aqui.
+
+Agora, criamos uma nova versão do código com a variável MAX_PENDING=1 e repetimos o processo:
+
+add_image_9 aqui
+
+Conforme era esperado, a conexão com os 10 clientes resultou em um maior número de timed out's:
+
+add_image_10 aqui
+
+A lógica dos hosts ativos e em espera ainda é a mesma.
+
+*** Bonus:
+
+Eu testei a conexão com o max pending igual a 0, e obtive a imagem a seguir:
+
+add_image_11
+
+Ao que tudo indica, o MAX_PENDING começa a contar do zero.  
+Nos exemplos anteriores, quando MAX_PENDING era igual a 5, 
+havia 1 conexao ativa, e 6 conexões em espera (do 0 ao 5). 
+Ao MAX_PENDING  mudar de valor, a mesma logica ocorreu, fazendo 
+haver 3 ligacoes para MAX_PENDING =  1 (1 ativa, 2 em espera) e duas
+para MAX_PENDING igual a zero (1 ativa, 1 em espera).

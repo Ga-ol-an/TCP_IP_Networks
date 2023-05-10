@@ -1,0 +1,2 @@
+ip='192.168.18.18'
+for i in {1..10}; do ./client_base $ip &  done
