@@ -1,0 +1,7 @@
+Nesse caso, eu me aproveitei das estruturas que já existiam para enviar e receber nos clients e server e coloquei nos codigos.
+O mais importante era focar nas variaveis de soquete que recepresentavam os clients e o server. Feito isso, o trabalho restante era
+pegar as funcoes para enviar e receber e aplicar as entradas a serem enviadas junto com o recebedor desejado.
+
+O resultado pode ser observado na figura a seguir
+
+add_image_1
