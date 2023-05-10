@@ -1,0 +1,7 @@
+Como o UDP não necessita de uma conexão fixa igual ao TCP, o servidor UDP é capaz
+de processar as mensagens recebidas de cada servidor simultaneamente, de forma que ele não se
+fixe a uma "conexão atual", colocando as outras em fila. 
+Dessa forma, conforme podemos notar na imagem abaixo, as mensagens serão gerenciadas assim que enviadas
+pelos clientes.
+
+add_image_1

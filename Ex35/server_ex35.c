@@ -13,12 +13,12 @@
 
 para rodar esse, é só digitar:
 
-    ./server_base 
+    ./server_ex35
 
 
 p/ compliar e rodar:
 
-    gcc server_base.c -o server_base && ./server_base
+    gcc server_ex35.c -o server_ex35 && ./server_ex35
 
  */
 
@@ -35,7 +35,7 @@ int main() {
     sin.sin_port = htons(SERVER_PORT);
 
     /* setup passive open */
-    if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((s = socket(PF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("simplex-talk: socket");
         exit(1);
     }
@@ -43,17 +43,11 @@ int main() {
         perror("simplex-talk: bind");
         exit(1);
     }
-    listen(s, MAX_PENDING);
-    /* wait for connection, then receive and print text */
+    /* receive and print text */
     addr_len = sizeof(sin);
-    while (1) {
-        if ((new_s = accept(s, (struct sockaddr *)&sin, &addr_len)) < 0) {
-            perror("simplex-talk: accept");
-            exit(1);
-        }
-        while (buf_len = recv(new_s, buf, sizeof(buf), 0)){
-            fputs(buf, stdout);
-        }
-        close(new_s);
+
+    while (buf_len = recv(s, buf, sizeof(buf), 0)) { //should it be with the socket s?
+        fputs(buf, stdout);
     }
+    close(s);
 }

@@ -12,16 +12,16 @@
 
 /*
 Coloque o seu ip ao rodar esse comando, da seguinte forma:
-gcc client_base.c -o client_base && ./client_base host_name_of_server
+gcc client_ex35.c -o client_ex35 && ./client_ex35 host_name_of_server
 
 Examplo de host: 192.168.18.18
 
 Exemplo:
 P/ compilar e rodar:
-    gcc client_base.c -o client_base &&
+    gcc client_ex35.c -o client_ex35 
 
 Somente para rodar:
-    ./client_base 192.168.18.18
+    ./client_ex35 192.168.18.18
 
 */
 int main(int argc, char *argv[]) {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     bcopy(&binary_address, (char *)&sin.sin_addr, sizeof(binary_address));
     sin.sin_port = htons(SERVER_PORT);
     /* active open */
-    if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((s = socket(PF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("simplex-talk: socket");
         exit(1);
     }
