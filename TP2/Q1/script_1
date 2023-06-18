@@ -1,0 +1,10 @@
+date
+echo 'Running on: ufrj' 
+traceroute -m 10 www.ufrj.br 
+echo 'Running on: ucsc' 
+traceroute -m 10 www.ucsc.edu 
+echo 'Running on: phil' 
+traceroute -m 10 www.phil.cam.ac.uk 
+echo 'Running on: adelaide' 
+traceroute -m 10 www.adelaide.edu.au 
+ 

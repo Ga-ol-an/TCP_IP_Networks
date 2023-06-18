@@ -1,0 +1,3 @@
+chmmod -x script_1
+
+./script_1 > outputs/number_period
