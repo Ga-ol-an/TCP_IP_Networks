@@ -1,0 +1,3 @@
+48. Write a test program that uses the socket interface to send messages between a pair of Unix workstations connected by some LAN (e.g.,Ethernet, ATM, or FDDI). Use this test program to perform the following experiments.
+(a) Measure the round-trip latency of TCP and UDP for different message sizes (e.g., 1 byte, 100 bytes, 200 bytes,..., 1000 bytes).
+(b) Measure the throughput of TCP and UDP for 1-kB, 2-kB, 3-kB,. . . , 32-kB messages. Plot the measured throughput as a function of message size.
