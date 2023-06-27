@@ -10,6 +10,15 @@
 #define SERVER_PORT 54321
 #define MAX_LINE 256
 
+void generate_random_message(char *buf, int len) {
+    static const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    int i;
+    for (i = 0; i < len - 1; i++) {
+        buf[i] = charset[rand() % (sizeof(charset) - 1)];
+    }
+    buf[len - 1] = '\0';
+}
+
 int main(int argc, char *argv[]) {
     FILE *fp;
     struct hostent *hp;
@@ -46,15 +55,20 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
+    srand(time(NULL)); // Initialize random seed
+
     /* Main loop: measure throughput for different message sizes */
     for (message_size = 1; message_size <= 32; message_size++) {
         len = message_size * 1024; // Convert kilobytes to bytes
+
         clock_t start = clock();
         for (int i = 0; i < 100000; i++) {
+            generate_random_message(buf, len);
             sendto(s, buf, len, 0, (struct sockaddr *)&sin, sizeof(sin));
             recvfrom(s, buf, sizeof(buf), 0, NULL, NULL);
         }
         clock_t end = clock();
+
         double total_time = (double)(end - start) / CLOCKS_PER_SEC;
         double avg_throughput = ((double)message_size * 8) / (total_time / 100000);
         printf("Average throughput for %d KB message: %.2f bits/second\n", message_size, avg_throughput);
