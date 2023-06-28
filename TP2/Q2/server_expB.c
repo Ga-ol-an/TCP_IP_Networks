@@ -8,7 +8,7 @@
 #include <time.h>
 
 #define SERVER_PORT 54321
-#define MAX_LINE 256
+#define MAX_LINE 32768
 
 void generate_random_message(char *buf, int len) {
     static const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -57,30 +57,21 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL)); // Initialize random seed
 
-    /* Main loop: measure throughput and round-trip latency for different message sizes */
-    for (message_size = 1; message_size <= 1000; message_size += 100) {
+    /* Main loop: measure throughput for different message sizes */
+    for (message_size = 1024; message_size <= 32768; message_size += 1024) {
         len = message_size;
 
         clock_t start = clock();
         for (int i = 0; i < 100000; i++) {
             generate_random_message(buf, len);
-
-            clock_t send_start = clock();
             sendto(s, buf, len, 0, (struct sockaddr *)&sin, sizeof(sin));
             recvfrom(s, buf, sizeof(buf), 0, NULL, NULL);
-            clock_t send_end = clock();
-
-            double latency = (double)(send_end - send_start) / CLOCKS_PER_SEC;
-            // Print latency for each message if needed
-            // printf("Latency for %d-byte message: %.6f seconds\n", len, latency);
         }
         clock_t end = clock();
 
         double total_time = (double)(end - start) / CLOCKS_PER_SEC;
-        double avg_latency = total_time / 100000;
-        double throughput = ((double)message_size * 8) / avg_latency;
+        double throughput = ((double)message_size * 8 * 100000) / total_time; // bits per second
         printf("Message size: %d bytes\n", message_size);
-        printf("Average round-trip latency: %.6f seconds\n", avg_latency);
         printf("Throughput: %.2f bits/second\n", throughput);
         printf("-----------------------------------------\n");
     }
@@ -88,10 +79,3 @@ int main(int argc, char *argv[]) {
     close(s);
     return 0;
 }
-
-
-
-
-
-
-

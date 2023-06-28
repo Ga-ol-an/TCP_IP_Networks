@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL)); // Initialize random seed
 
-    /* Main loop: measure throughput and round-trip latency for different message sizes */
+    /* Main loop: measure round-trip latency for different message sizes */
     for (message_size = 1; message_size <= 1000; message_size += 100) {
         len = message_size;
 
@@ -78,20 +78,11 @@ int main(int argc, char *argv[]) {
 
         double total_time = (double)(end - start) / CLOCKS_PER_SEC;
         double avg_latency = total_time / 100000;
-        double throughput = ((double)message_size * 8) / avg_latency;
         printf("Message size: %d bytes\n", message_size);
         printf("Average round-trip latency: %.6f seconds\n", avg_latency);
-        printf("Throughput: %.2f bits/second\n", throughput);
         printf("-----------------------------------------\n");
     }
 
     close(s);
     return 0;
 }
-
-
-
-
-
-
-
