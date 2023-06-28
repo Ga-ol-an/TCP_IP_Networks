@@ -8,7 +8,7 @@
 #include <time.h>
 
 #define SERVER_PORT 54321
-#define MAX_LINE 256
+#define MAX_LINE  1000
 
 void generate_random_message(char *buf, int len) {
     static const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     srand(time(NULL)); // Initialize random seed
 
     /* Main loop: measure round-trip latency for different message sizes */
-    for (message_size = 1; message_size <= 1000; message_size += 100) {
+    for (message_size = 1; message_size <= 1001; message_size += 100) {
         len = message_size;
 
         clock_t start = clock();
