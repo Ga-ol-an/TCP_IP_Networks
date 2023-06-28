@@ -1,0 +1,53 @@
+TRACEROUTE(1)             User's Reference Manual            TRACEROUTE(1)
+
+NAME
+     traceroute — trace the route to a host
+
+SYNOPSIS
+     traceroute [option ...] host
+
+DESCRIPTION
+     Print the route packets trace to network host.
+
+OPTIONS
+     -f, --first-hop=start
+             Set the initial hop distance, that is the time-to-live.
+
+     -g, --gateways=gates
+             List of gateways for loose source routing.
+
+     -I, --icmp
+             Use ICMP ECHO as probe.
+
+     -m, --max-hop=num
+             Set the maximal hop count (default is 64).
+
+     -M, --type=method
+             Use the method (icmp or the default udp) for traceroute oper‐
+             ations.
+
+     -p, --port=port
+             Use the destination port port (default is 33434).
+
+     -q, --tries=num
+             Send num probe packets per hop (default is 3).
+
+     --resolve-hostnames
+             Resolve hostnames.
+
+     -t, --tos=class
+             Set the type of service (TOS) to class.
+
+     -w, --wait=timeout
+             Wait timeout seconds for responses (default is 3).
+
+     -?, --help
+             Give this help list.
+
+     --usage
+             Give a short usage message.
+
+     -V, --version
+             Print program version.
+
+GNU Network Utilities        February 9, 2019        GNU Network Utilities
