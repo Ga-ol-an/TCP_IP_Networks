@@ -8,7 +8,7 @@
 #include <time.h>
 
 #define SERVER_PORT 54321
-#define MAX_LINE 32768
+#define MAX_LINE  33000
 
 void generate_random_message(char *buf, int len) {
     static const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -57,22 +57,36 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL)); // Initialize random seed
 
-    /* Main loop: measure throughput for different message sizes */
+    /* Main loop: measure round-trip latency for different message sizes */
     for (message_size = 1024; message_size <= 32768; message_size += 1024) {
+        if (message_size ==1024){
+            printf("-----------------------------------------\n");
+            printf("connection successfully set \n");
+            printf("-----------------------------------------\n");
+        }
         len = message_size;
 
+        int num_messages = 100000;
+
         clock_t start = clock();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < num_messages; i++) {
             generate_random_message(buf, len);
+
             sendto(s, buf, len, 0, (struct sockaddr *)&sin, sizeof(sin));
             recvfrom(s, buf, sizeof(buf), 0, NULL, NULL);
+
+            // double latency = (double)(send_end - send_start) / CLOCKS_PER_SEC;
+            // Print latency for each message if needed
+            // printf("Latency for %d-byte message: %.6f seconds\n", len, latency);
         }
         clock_t end = clock();
 
         double total_time = (double)(end - start) / CLOCKS_PER_SEC;
-        double throughput = ((double)message_size * 8 * 100000) / total_time; // bits per second
+        double avg_latency = total_time / num_messages;
+        double throughput = (8*message_size)/ avg_latency;
         printf("Message size: %d bytes\n", message_size);
-        printf("Throughput: %.2f bits/second\n", throughput);
+        printf("Average round-trip latency: %.6f seconds\n", avg_latency);
+        printf("Average throughput: %.2f bits/second\n", throughput);
         printf("-----------------------------------------\n");
     }
 

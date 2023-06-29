@@ -1,0 +1,131 @@
+-----------------------------------------
+connection successfully set 
+-----------------------------------------
+Message size: 1024 bytes
+Average round-trip latency: 0.000041 seconds
+Average throughput: 199668519.06 bits/second
+-----------------------------------------
+Message size: 2048 bytes
+Average round-trip latency: 0.000064 seconds
+Average throughput: 257028112.45 bits/second
+-----------------------------------------
+Message size: 3072 bytes
+Average round-trip latency: 0.000076 seconds
+Average throughput: 321734349.23 bits/second
+-----------------------------------------
+Message size: 4096 bytes
+Average round-trip latency: 0.000100 seconds
+Average throughput: 326817202.59 bits/second
+-----------------------------------------
+Message size: 5120 bytes
+Average round-trip latency: 0.000120 seconds
+Average throughput: 342371861.31 bits/second
+-----------------------------------------
+Message size: 6144 bytes
+Average round-trip latency: 0.000800 seconds
+Average throughput: 61410062.59 bits/second
+-----------------------------------------
+Message size: 7168 bytes
+Average round-trip latency: 0.000223 seconds
+Average throughput: 257188347.95 bits/second
+-----------------------------------------
+Message size: 8192 bytes
+Average round-trip latency: 0.000158 seconds
+Average throughput: 414058896.74 bits/second
+-----------------------------------------
+Message size: 9216 bytes
+Average round-trip latency: 0.000179 seconds
+Average throughput: 412524339.20 bits/second
+-----------------------------------------
+Message size: 10240 bytes
+Average round-trip latency: 0.000218 seconds
+Average throughput: 376389290.92 bits/second
+-----------------------------------------
+Message size: 11264 bytes
+Average round-trip latency: 0.000241 seconds
+Average throughput: 373820299.76 bits/second
+-----------------------------------------
+Message size: 12288 bytes
+Average round-trip latency: 0.000286 seconds
+Average throughput: 343536499.70 bits/second
+-----------------------------------------
+Message size: 13312 bytes
+Average round-trip latency: 0.000276 seconds
+Average throughput: 385821522.77 bits/second
+-----------------------------------------
+Message size: 14336 bytes
+Average round-trip latency: 0.000274 seconds
+Average throughput: 418393739.85 bits/second
+-----------------------------------------
+Message size: 15360 bytes
+Average round-trip latency: 0.000318 seconds
+Average throughput: 386353132.04 bits/second
+-----------------------------------------
+Message size: 16384 bytes
+Average round-trip latency: 0.000356 seconds
+Average throughput: 368348429.20 bits/second
+-----------------------------------------
+Message size: 17408 bytes
+Average round-trip latency: 0.000383 seconds
+Average throughput: 363979457.16 bits/second
+-----------------------------------------
+Message size: 18432 bytes
+Average round-trip latency: 0.000428 seconds
+Average throughput: 344611932.97 bits/second
+-----------------------------------------
+Message size: 19456 bytes
+Average round-trip latency: 0.000672 seconds
+Average throughput: 231738710.32 bits/second
+-----------------------------------------
+Message size: 20480 bytes
+Average round-trip latency: 0.000453 seconds
+Average throughput: 361914986.21 bits/second
+-----------------------------------------
+Message size: 21504 bytes
+Average round-trip latency: 0.000482 seconds
+Average throughput: 356662755.16 bits/second
+-----------------------------------------
+Message size: 22528 bytes
+Average round-trip latency: 0.000482 seconds
+Average throughput: 373923453.41 bits/second
+-----------------------------------------
+Message size: 23552 bytes
+Average round-trip latency: 0.000513 seconds
+Average throughput: 367098028.67 bits/second
+-----------------------------------------
+Message size: 24576 bytes
+Average round-trip latency: 0.000537 seconds
+Average throughput: 366080638.73 bits/second
+-----------------------------------------
+Message size: 25600 bytes
+Average round-trip latency: 0.000560 seconds
+Average throughput: 365573931.44 bits/second
+-----------------------------------------
+Message size: 26624 bytes
+Average round-trip latency: 0.000575 seconds
+Average throughput: 370714217.34 bits/second
+-----------------------------------------
+Message size: 27648 bytes
+Average round-trip latency: 0.000565 seconds
+Average throughput: 391491350.11 bits/second
+-----------------------------------------
+Message size: 28672 bytes
+Average round-trip latency: 0.000574 seconds
+Average throughput: 399543629.54 bits/second
+-----------------------------------------
+Message size: 29696 bytes
+Average round-trip latency: 0.000606 seconds
+Average throughput: 392104694.17 bits/second
+-----------------------------------------
+Message size: 30720 bytes
+Average round-trip latency: 0.000632 seconds
+Average throughput: 388860759.50 bits/second
+-----------------------------------------
+Message size: 31744 bytes
+Average round-trip latency: 0.000654 seconds
+Average throughput: 388305810.39 bits/second
+-----------------------------------------
+Message size: 32768 bytes
+Average round-trip latency: 0.000696 seconds
+Average throughput: 376643678.16 bits/second
+-----------------------------------------

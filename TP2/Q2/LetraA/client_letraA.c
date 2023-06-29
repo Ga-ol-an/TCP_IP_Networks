@@ -59,10 +59,17 @@ int main(int argc, char *argv[]) {
 
     /* Main loop: measure round-trip latency for different message sizes */
     for (message_size = 1; message_size <= 1001; message_size += 100) {
+        if (message_size ==1){
+            printf("-----------------------------------------\n");
+            printf("connection successfully set \n");
+            printf("-----------------------------------------\n");
+        }
         len = message_size;
 
+        int num_messages = 100000;
+
         clock_t start = clock();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < num_messages; i++) {
             generate_random_message(buf, len);
 
             clock_t send_start = clock();
@@ -72,12 +79,12 @@ int main(int argc, char *argv[]) {
 
             double latency = (double)(send_end - send_start) / CLOCKS_PER_SEC;
             // Print latency for each message if needed
-            // printf("Latency for %d-byte message: %.6f seconds\n", len, latency);
+            printf("Latency for %d-byte message: %.6f seconds\n", len, latency);
         }
         clock_t end = clock();
 
         double total_time = (double)(end - start) / CLOCKS_PER_SEC;
-        double avg_latency = total_time / 100000;
+        double avg_latency = total_time / num_messages;
         printf("Message size: %d bytes\n", message_size);
         printf("Average round-trip latency: %.6f seconds\n", avg_latency);
         printf("-----------------------------------------\n");
