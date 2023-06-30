@@ -71,15 +71,9 @@ int main(int argc, char *argv[]) {
         clock_t start = clock();
         for (int i = 0; i < num_messages; i++) {
             generate_random_message(buf, len);
-
-            clock_t send_start = clock();
+            
             sendto(s, buf, len, 0, (struct sockaddr *)&sin, sizeof(sin));
             recvfrom(s, buf, sizeof(buf), 0, NULL, NULL);
-            clock_t send_end = clock();
-
-            double latency = (double)(send_end - send_start) / CLOCKS_PER_SEC;
-            // Print latency for each message if needed
-            printf("Latency for %d-byte message: %.6f seconds\n", len, latency);
         }
         clock_t end = clock();
 

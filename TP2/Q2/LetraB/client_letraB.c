@@ -74,10 +74,7 @@ int main(int argc, char *argv[]) {
 
             sendto(s, buf, len, 0, (struct sockaddr *)&sin, sizeof(sin));
             recvfrom(s, buf, sizeof(buf), 0, NULL, NULL);
-
-            // double latency = (double)(send_end - send_start) / CLOCKS_PER_SEC;
-            // Print latency for each message if needed
-            // printf("Latency for %d-byte message: %.6f seconds\n", len, latency);
+            
         }
         clock_t end = clock();
 
